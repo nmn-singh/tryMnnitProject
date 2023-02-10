@@ -1,0 +1,26 @@
+{
+  "name": "trymnnitproject",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nmn-singh/tryMnnitProject.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nmn-singh/tryMnnitProject/issues"
+  },
+  "homepage": "https://github.com/nmn-singh/tryMnnitProject#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "express": "^4.18.2",
+    "mongod": "^2.0.0",
+    "mongoose": "^6.9.1",
+    "nodemon": "^2.0.20"
+  }
+}
