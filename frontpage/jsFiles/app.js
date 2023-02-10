@@ -3,26 +3,48 @@ const express=require("Express");
 const https= require("https");
 const bodyparser= require("body-parser");
 const { response } = require("Express");
-const app=express();
+const appexpress=express();
 
-const mongoose = require('mongoose')
-mongoose.set('strictQuery', false);
-const url = `mongodb+srv://arpit:arpit@db1.s8b2mzs.mongodb.net/?retryWrites=true&w=majority`;
+// Import the functions you need from the SDKs you need
 
-const connectionParams={
-    useNewUrlParser: true,
-   // useCreateIndex: false,
-    useUnifiedTopology: true 
-}
-mongoose.connect(url,connectionParams)
-    .then( () => {
-        console.log('Connected to the database ')
-    })
-    .catch( (err) => {
-        console.error(`Error connecting to the database. n${err}`);
-    })
+import { initializeApp } from "firebase/app";
 
-app.get("/",function(req,res)
+import { getAnalytics } from "firebase/analytics";
+
+// TODO: Add SDKs for Firebase products that you want to use
+
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+
+// Your web app's Firebase configuration
+
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+const firebaseConfig = {
+
+  apiKey: "AIzaSyDx6ZPzq1YzPuVmJO8HbMy8Mq0x8B_gNSE",
+
+  authDomain: "trymnnit.firebaseapp.com",
+
+  projectId: "trymnnit",
+
+  storageBucket: "trymnnit.appspot.com",
+
+  messagingSenderId: "970884163038",
+
+  appId: "1:970884163038:web:5ac0ab72e0e9bcaf2ca94f",
+
+  measurementId: "G-2D08MFMFSX"
+
+};
+
+
+// Initialize Firebase
+
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
+
+appexpress.get("/",function(req,res)
 {
     const str=path.join(__dirname,'../');
     const str2=str+ "/views/frontpage.html";
@@ -39,7 +61,7 @@ app.get("/",function(req,res)
 //   })
 //   app.listen(port)
 //console.log(str2);
-app.listen(3000,function()
+appexpress.listen(3000,function()
 {
     console.log("Server is running on port 3000");
 });
