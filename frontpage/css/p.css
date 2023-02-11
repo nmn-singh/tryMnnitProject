@@ -1,0 +1,46 @@
+.box1{
+    width: 900px;
+    height: 60px;
+    border-radius: 20px;
+    background-color: aquamarine;
+    margin-left: 80px;
+
+}
+.q{
+    font-size: 25px;
+    font-style: italic;
+    margin-left: 80px;
+}
+.a{
+    margin-left: 300px;
+    font-size: 25px;
+    font-style: italic;
+
+}
+.answer1{
+    width:900px;
+    height:60px;
+    border-radius:20px;
+    background-color: rgb(169, 236, 54);
+    margin-left: 300px;
+}
+
+.btn{
+    background-color: rgb(17, 184, 53);
+    margin-left: 500px;
+    width: 200px;
+    height: 50px;
+    border-radius: 20px;
+}
+
+.btntxt{
+    font-size: 15px;
+    font-style:oblique;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+.heading{
+    margin-left: 300px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+}
+
