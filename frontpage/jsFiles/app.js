@@ -1,68 +1,148 @@
-const path=require('path');
 const express=require("Express");
 const https= require("https");
+const path=require("path");
 const bodyparser= require("body-parser");
 const { response } = require("Express");
-const appexpress=express();
+const app=express();
+app.use(bodyparser.urlencoded({extended:true}));
+const mongoose = require("mongoose");
+const { time } = require("console");
+mongoose.set('strictQuery', false);
 
-// Import the functions you need from the SDKs you need
+const mongoDB = "mongodb://127.0.0.1/TRYMNNIT";
+main().catch(err => console.log(err));
+async function main() {
+  await mongoose.connect(mongoDB);
+}
+const Schema = mongoose.Schema;
 
-import { initializeApp } from "firebase/app";
-
-import { getAnalytics } from "firebase/analytics";
-
-// TODO: Add SDKs for Firebase products that you want to use
-
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-
-// Your web app's Firebase configuration
-
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-
-const firebaseConfig = {
-
-  apiKey: "AIzaSyDx6ZPzq1YzPuVmJO8HbMy8Mq0x8B_gNSE",
-
-  authDomain: "trymnnit.firebaseapp.com",
-
-  projectId: "trymnnit",
-
-  storageBucket: "trymnnit.appspot.com",
-
-  messagingSenderId: "970884163038",
-
-  appId: "1:970884163038:web:5ac0ab72e0e9bcaf2ca94f",
-
-  measurementId: "G-2D08MFMFSX"
-
-};
-
-
-// Initialize Firebase
-
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-
-appexpress.get("/",function(req,res)
+const LoginSchema = new Schema
+({
+  emailid : String,
+  username :String,
+  password :String
+});
+const Tasksf =mongoose.model("LoginIDFarmer",LoginSchema);
+const Taskse =mongoose.model("LoginIDEnthu",LoginSchema);
+// USe Tasksf for handling farmers database
+// USe TAskse for handling enthusiasts database
+const t1=new Tasksf({
+  emailid : "arpit@gmail.com",
+  username :"arpitras",
+  password : "naman"
+});
+const t2= new Taskse(
 {
-    const str=path.join(__dirname,'../');
-    const str2=str+ "/views/frontpage.html";
-    res.sendFile(str2);
- //   res.send("LETS GO");
-     console.log(str2);
-    console.log("Running I guess");
-    
+emailid : "arsh@gmail.com",
+username :"arshweb",
+password : "naman"
 });
 
-// const port = process.env.port || 3000;
-// app.get('/',(err,res) => {
-//     res.send("hh")
-//   })
-//   app.listen(port)
+// t1.save();
+// t2.save();
+app.post("/fsignin.html",function(req,res)
+{
+  // const res2=req.body.s1;
+   const v1= req.body.fsinid;
+   const v2=req.body.fsinpasswd;
+   Tasksf.find({username :v1, password: v2},function(err,docs)
+   {
+       if(err)
+        res.send("err");
+       else
+       {
+        var x= console.log(Object.keys(docs).length);
+        x=Object.keys(docs).length;
+         if(x==0)
+          res.send("Login Failed");
+         else
+          res.send("Welcome");
+       }
+   });
+   //console.log("data added successfully");
+  // res.send("Added to DB successfully");
+});
+
+app.post("/fsignup",function(req,res)
+{
+   const v1= req.body.fsupid;
+   const v2= req.body.fsupemail;
+   const v3=req.body.fsuppasswd;
+   const t1=new Tasksf({
+    emailid : v2,
+    username :v1,
+    password : v3
+  });
+   t1.save();
+   res.send("ID created succesfully");
+
+});
+
+app.post("/esignin.html",function(req,res)
+{
+  // const res2=req.body.s1;
+   const v1= req.body.fsinid;
+   const v2=req.body.fsinpasswd;
+   Taskse.find({username :v1, password: v2},function(err,docs)
+   {
+       if(err)
+        res.send("err");
+       else
+       {
+        var x= console.log(Object.keys(docs).length);
+        x=Object.keys(docs).length;
+         if(x==0)
+          res.send("Login Failed");
+         else
+          res.send("Welcome");
+       }
+   });
+   //console.log("data added successfully");
+  // res.send("Added to DB successfully");
+});
+app.post("/esignup",function(req,res)
+{
+   const v1= req.body.fsupid;
+   const v2= req.body.fsupemail;
+   const v3=req.body.fsuppasswd;
+   const t1=new Taskse({
+    emailid : v2,
+    username :v1,
+    password : v3
+  });
+   t1.save();
+   res.send("ID created succesfully");
+
+});
+
+
+
+const str=__dirname;
+const str2=path.join(__dirname,"../");
 //console.log(str2);
-appexpress.listen(3000,function()
+app.use(express.static(str2)); 
+console.log(str2);
+app.get("/",function(req,res)
+{
+    const str=__dirname;
+    const str2= path.join(__dirname,"../");
+    res.sendFile(str2 + "/views/frontpage.html");
+   console.log(str2+ "/views/frontpage.html");
+   console.log("Running I guess");
+});
+app.get("/details",function(req,res)
+{
+  //res.send("Working rn");
+    Tasks.find(function(err,workings)
+    {
+         if(err)
+          console.log(err);
+        else
+        res.send(workings);
+    });
+});
+
+app.listen(3000,function()
 {
     console.log("Server is running on port 3000");
 });
-    
