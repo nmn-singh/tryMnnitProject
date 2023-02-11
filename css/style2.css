@@ -1,0 +1,23 @@
+.box1{
+    width: 900px;
+    height: 60px;
+    border-radius: 20px;
+    background-color: aquamarine;
+}
+.q{
+    font-size: 25px;
+    font-style: italic;
+}
+.a{
+    margin-left: 200px;
+    font-size: 25px;
+    font-style: italic;
+
+}
+.answer1{
+    width:900px;
+    height:60px;
+    border-radius:20px;
+    background-color: rgb(169, 236, 54);
+    margin-left: 200px;
+}
