@@ -1,1 +1,21 @@
 # tryMnnitProject
+
+
+
+
+TECH STACK
+
+Front-End
+
+1) HTML
+2) CSS
+3) BOOTSTRAP
+4) JAVASCRIPT
+
+
+
+BACK-END
+
+1) MONGO DB
+2) NODE JS
+3) EXPRESS JS
