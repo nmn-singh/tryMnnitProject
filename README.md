@@ -5,7 +5,7 @@
 
 TECH STACK
 
-Front-End
+FRONT-END
 
 1) HTML
 2) CSS
