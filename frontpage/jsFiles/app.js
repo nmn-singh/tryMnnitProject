@@ -16,6 +16,13 @@ async function main() {
 }
 const Schema = mongoose.Schema;
 
+
+const str=__dirname;
+const str2=path.join(__dirname,"../");
+//console.log(str2);
+app.use(express.static(str2)); 
+console.log(str2);
+
 const LoginSchema = new Schema
 ({
   emailid : String,
@@ -117,11 +124,6 @@ app.post("/esignup",function(req,res)
 
 
 
-const str=__dirname;
-const str2=path.join(__dirname,"../");
-//console.log(str2);
-app.use(express.static(str2)); 
-console.log(str2);
 app.get("/",function(req,res)
 {
     const str=__dirname;
