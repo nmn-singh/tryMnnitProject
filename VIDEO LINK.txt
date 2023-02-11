@@ -1,0 +1,17 @@
+https://youtu.be/8SXuIiqvPZU
+
+TECH STACK
+
+Front-End
+
+HTML
+CSS
+BOOTSTRAP
+JAVASCRIPT
+
+
+BACK-END
+
+MONGO DB
+NODE JS
+EXPRESS JS
